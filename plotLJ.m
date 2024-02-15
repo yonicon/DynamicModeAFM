@@ -1,14 +1,15 @@
-Xstart=0.0e-9;
-Xend=5e-9;
+%plots Interaction Potential Force and df/dx VS. Seperation distance. 
+Xstart=0.0e-9; %minimum distance - meters
+Xend=5e-9;     %maximum distance - meters
 Xrange=Xend-Xstart;
-NumPoint=3000;
-Xstep=Xrange/NumPoint;
-x=zeros(1,NumPoint);
+NumPoint=3000;  %number of points to plot. 
+Xstep=Xrange/NumPoint; %step between points
+x=zeros(1,NumPoint);  %init arrays
 V=zeros(1,NumPoint);
 F=zeros(1,NumPoint);
 dF=zeros(1,NumPoint);
 for i=0:(NumPoint-1)
-    x(i+1)=Xstart+(i*Xstep);
+    x(i+1)=Xstart+(i*Xstep); 
     [V(i+1),F(i+1)]=sampledistanceLJ(x(i+1));
 
     if i==0                %calculate get dF/dx
